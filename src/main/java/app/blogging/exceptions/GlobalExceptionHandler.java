@@ -29,6 +29,10 @@ public class GlobalExceptionHandler {
         });
         return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
+    public ResponseEntity<ApiResponse> dtoValidationExceptionHandler(DTOValidationException ex){
+        ApiResponse apiResponse=new ApiResponse(ex.getMessage(),false);
+        return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
+    }
     //For any other Exception
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse> allExceptionHandler(Exception ex){
